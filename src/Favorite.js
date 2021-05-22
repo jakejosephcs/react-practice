@@ -1,37 +1,26 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import withToggler from './HOCs/withToggler';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeartbeat } from '@fortawesome/free-solid-svg-icons';
 
 class Favorite extends React.Component {
-  state = {
-    solidHeart: true,
-  };
-
-  toggleSolidHeart = () => {
-    this.setState(prevState => {
-      return {
-        solidHeart: !prevState.solidHeart,
-      };
-    });
-  };
-
   render() {
     return (
       <div>
-        {this.state.solidHeart ? (
+        {this.props.on ? (
           <FontAwesomeIcon
             className='fa-2x'
             icon={faHeart}
-            onClick={this.toggleSolidHeart}
+            onClick={this.props.toggle}
           />
         ) : (
           <FontAwesomeIcon
             style={{ color: 'red' }}
             className='fa-2x'
             icon={faHeartbeat}
-            onClick={this.toggleSolidHeart}
+            onClick={this.props.toggle}
           />
         )}
       </div>
@@ -39,4 +28,4 @@ class Favorite extends React.Component {
   }
 }
 
-export default Favorite;
+export default withToggler(Favorite);

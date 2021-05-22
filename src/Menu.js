@@ -1,25 +1,14 @@
 import React from 'react';
+import withToggler from './HOCs/withToggler';
 
 class Menu extends React.Component {
-  state = {
-    showMenu: true,
-  };
-
-  toggleMenu = () => {
-    this.setState(prevState => {
-      return {
-        showMenu: !prevState.showMenu,
-      };
-    });
-  };
-
   render() {
     return (
       <div>
-        <button onClick={this.toggleMenu}>
-          {this.state.showMenu ? 'Hide' : 'Show'} Menu
+        <button onClick={this.props.toggle}>
+          {this.props.on ? 'Hide' : 'Show'} Menu
         </button>
-        <div style={{ display: this.state.showMenu ? 'block' : 'none' }}>
+        <div style={{ display: this.props.on ? 'block' : 'none' }}>
           <p>Content</p>
           <p>Of</p>
           <p>Container</p>
@@ -29,4 +18,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default withToggler(Menu);
