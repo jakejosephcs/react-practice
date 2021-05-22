@@ -18,4 +18,4 @@ class Menu extends React.Component {
   }
 }
 
-export default withToggler(Menu);
+export default withToggler(Menu, { defaultOn: false });

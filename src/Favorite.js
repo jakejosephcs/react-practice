@@ -28,4 +28,4 @@ class Favorite extends React.Component {
   }
 }
 
-export default withToggler(Favorite);
+export default withToggler(Favorite, { defaultOn: true });

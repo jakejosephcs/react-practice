@@ -2,7 +2,7 @@ import React from 'react';
 
 class Toggler extends React.Component {
   state = {
-    on: true,
+    on: this.props.defaultOn,
   };
 
   toggle = () => {
@@ -18,8 +18,14 @@ class Toggler extends React.Component {
   }
 }
 
-export default function (component) {
+export default function (component, objProperties) {
   return function (props) {
-    return <Toggler component={component} {...props} />;
+    return (
+      <Toggler
+        component={component}
+        defaultOn={objProperties.defaultOn}
+        {...props}
+      />
+    );
   };
 }
