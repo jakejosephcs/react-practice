@@ -9,6 +9,7 @@ function Favorite() {
   return (
     <>
       <Toggler
+        defaultOn={false}
         render={(on, toggle) => (
           <div>
             {on ? (

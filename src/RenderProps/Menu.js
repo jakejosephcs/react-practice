@@ -5,6 +5,7 @@ import Toggler from './Toggler';
 function Menu() {
   return (
     <Toggler
+      defaultOn={true}
       render={(on, toggle) => (
         <div>
           <button onClick={toggle}>{on ? 'Hide' : 'Show'} Menu</button>

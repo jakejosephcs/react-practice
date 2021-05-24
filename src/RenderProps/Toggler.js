@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 function Toggler(props) {
-  const [on, setOn] = useState(false);
+  console.log(props.defaultOn);
+  const [on, setOn] = useState(props.defaultOn);
 
   const toggle = () => {
     setOn(prevState => !prevState);
