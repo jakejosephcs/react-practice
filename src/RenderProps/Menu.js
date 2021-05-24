@@ -1,18 +1,22 @@
 import React from 'react';
 
+import Toggler from './Toggler';
+
 function Menu() {
-    return (
-      <div>
-        <button >
-          Menu
-        </button>
-        <div >
-          <p>Content</p>
-          <p>Of</p>
-          <p>Container</p>
+  return (
+    <Toggler
+      render={(on, toggle) => (
+        <div>
+          <button onClick={toggle}>{on ? 'Hide' : 'Show'} Menu</button>
+          <div style={{ display: on ? 'block' : 'none' }}>
+            <p>Content</p>
+            <p>Of</p>
+            <p>Container</p>
+          </div>
         </div>
-      </div>
-    );
+      )}
+    />
+  );
 }
 
-export default Menu
+export default Menu;
