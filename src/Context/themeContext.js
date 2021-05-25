@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const ThemeContext = React.createContext();
 
 function ThemeContextProdivder(props) {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(props.defaultTheme);
 
   const toggleTheme = () =>
     setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
@@ -14,5 +14,9 @@ function ThemeContextProdivder(props) {
     </ThemeContext.Provider>
   );
 }
+
+ThemeContextProdivder.defaultProps = {
+  defaultTheme: 'dark',
+};
 
 export { ThemeContextProdivder, ThemeContext };
