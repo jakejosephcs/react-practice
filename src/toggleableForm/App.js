@@ -27,13 +27,20 @@ const App = () => {
   );
 };
 const ToggleableForm = ({ options }) => {
-  const currentForm = 0; // Change this to 1 to get the Signup form to show up
+  const [currentForm, setCurrentForm] = useState(0); // Change this to 1 to get the Signup form to show up
   let focusRef = 0;
 
   return (
     <>
       {options.map((el, index) => {
-        return <ButtonToggle key={`button${index}`}>{el.name}</ButtonToggle>;
+        return (
+          <ButtonToggle
+            key={`button${index}`}
+            toggleForm={() => setCurrentForm(index)}
+          >
+            {el.name}
+          </ButtonToggle>
+        );
       })}
       <FormToggle currentIndex={currentForm}>
         {options.map((el, index) => {
@@ -54,7 +61,8 @@ const ButtonToggle = ({ children, toggleRef, toggleForm }) => {
   return (
     <button
       onClick={() => {
-        // Hmm, things should happen here
+        // Hmm, things should happen
+        toggleForm();
       }}
     >
       {children}
@@ -64,7 +72,7 @@ const ButtonToggle = ({ children, toggleRef, toggleForm }) => {
 
 const FormToggle = ({ children, currentIndex }) => {
   if (Array.isArray(children)) {
-    return <div>{children}</div>;
+    return <div>{children[currentIndex]}</div>;
     // Remember, `children` is an array when there's multiple!
     // So, if you want to show all the forms, you just put
     // `children`.
