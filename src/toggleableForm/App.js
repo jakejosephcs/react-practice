@@ -87,8 +87,18 @@ const LoginForm = props => {
 
   return (
     <>
-      <input type='text' defaultValue={username} placeholder='Username' />
-      <input type='password' defaultValue={password} placeholder='Password' />
+      <input
+        type='text'
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+        placeholder='Username'
+      />
+      <input
+        type='password'
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        placeholder='Password'
+      />
       <button>Submit</button>
     </>
   );
@@ -101,9 +111,24 @@ const SignupForm = props => {
 
   return (
     <>
-      <input type='email' defaultValue={email} placeholder='Email' />
-      <input type='text' defaultValue={username} placeholder='Username' />
-      <input type='password' defaultValue={password} placeholder='Password' />
+      <input
+        type='email'
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        placeholder='Email'
+      />
+      <input
+        type='text'
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+        placeholder='Username'
+      />
+      <input
+        type='password'
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        placeholder='Password'
+      />
       <button>Submit</button>
     </>
   );
