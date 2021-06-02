@@ -28,7 +28,7 @@ const App = () => {
 };
 const ToggleableForm = ({ options }) => {
   const [currentForm, setCurrentForm] = useState(0); // Change this to 1 to get the Signup form to show up
-  let focusRef = 0;
+  let focusRef = useRef(null);
 
   return (
     <>
@@ -47,7 +47,7 @@ const ToggleableForm = ({ options }) => {
           return (
             <div key={`form${index}`}>
               {createElement(el.component, {
-                /* Hmm, what should go here?*/
+                ref: focusRef,
               })}
             </div>
           );
@@ -81,9 +81,13 @@ const FormToggle = ({ children, currentIndex }) => {
   return null;
 };
 
-const LoginForm = props => {
+const LoginForm = forwardRef((props, ref) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   return (
     <>
@@ -92,6 +96,7 @@ const LoginForm = props => {
         value={username}
         onChange={e => setUsername(e.target.value)}
         placeholder='Username'
+        ref={ref}
       />
       <input
         type='password'
@@ -102,12 +107,16 @@ const LoginForm = props => {
       <button>Submit</button>
     </>
   );
-};
+});
 
-const SignupForm = props => {
+const SignupForm = forwardRef((props, ref) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   return (
     <>
@@ -116,6 +125,7 @@ const SignupForm = props => {
         value={email}
         onChange={e => setEmail(e.target.value)}
         placeholder='Email'
+        ref={ref}
       />
       <input
         type='text'
@@ -132,6 +142,6 @@ const SignupForm = props => {
       <button>Submit</button>
     </>
   );
-};
+});
 
 export default App;
