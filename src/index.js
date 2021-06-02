@@ -1,11 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Context/App';
-import { ThemeContextProdivder } from './Context/themeContext';
+import App from './toggleableForm/App.js';
 
-ReactDOM.render(
-  <ThemeContextProdivder>
-    <App />
-  </ThemeContextProdivder>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
